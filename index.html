@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#063d57">
+    <meta name="description" content="AC Reserva — gestão corporativa de reservas de salas.">
+    <title>AC Reserva</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+  </head>
+  <body>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <main id="welcome-screen" class="welcome-shell">
+      <section class="welcome-card" aria-labelledby="welcome-title">
+        <a class="brand acim-brand" href="/" aria-label="AC Reserva, página inicial">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span><strong>ACIM</strong><small>ASSOCIAÇÃO COMERCIAL E DE INOVAÇÃO DE MARÍLIA</small></span>
+        </a>
+        <p class="eyebrow">PLATAFORMA DE RESERVAS</p>
+        <h1 id="welcome-title">Seu espaço para <em>fazer acontecer.</em></h1>
+        <p class="intro">Reserve salas, auditórios e espaços da ACIM com agilidade, transparência e toda a estrutura que o seu encontro precisa.</p>
+        <p class="question">Como você deseja acessar?</p>
+        <div class="access-grid">
+          <button class="access-option" data-access="associate">
+            <span class="option-icon" aria-hidden="true">↗</span>
+            <span class="option-copy"><strong>Associado</strong><small>Quero consultar ou realizar uma reserva</small></span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <button class="access-option" data-access="acim">
+            <span class="option-icon option-icon--blue" aria-hidden="true">◈</span>
+            <span class="option-copy"><strong>ACIM</strong><small>Sou colaborador interno</small></span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <button class="access-option" data-access="external">
+            <span class="option-icon option-icon--orange" aria-hidden="true">○</span>
+            <span class="option-copy"><strong>Outro</strong><small>Sou convidado ou usuário externo</small></span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <p class="privacy-note">ACIM · Associação Comercial e de Inovação de Marília</p>
+      </section>
+    </main>
+
+    <section id="login-screen" class="auth-shell hidden" aria-labelledby="login-title">
+      <div class="auth-visual">
+        <a class="brand brand--light acim-brand" href="/" aria-label="AC Reserva, página inicial"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>ACIM</strong><small>RESERVA DE ESPAÇOS</small></span></a>
+        <div><p class="eyebrow">ESPAÇOS QUE CONECTAM</p><h2>Boas ideias merecem o melhor lugar.</h2><p>Consulte disponibilidade, escolha sua sala e acompanhe cada detalhe do evento em um só ambiente.</p></div>
+        <div class="visual-stat"><strong>ACIM RESERVA</strong><span>organização para cada encontro</span></div>
+      </div>
+      <div class="auth-panel">
+        <button class="back-link" id="back-to-welcome" type="button">← Voltar</button>
+        <div id="sector-picker" class="hidden">
+          <p class="eyebrow">ACESSO INTERNO</p><h1>Olá, ACIM!</h1><p class="muted">Selecione seu setor para continuar.</p>
+          <label class="search-field"><span aria-hidden="true">⌕</span><input id="sector-search" type="search" placeholder="Pesquisar setor..."></label>
+          <div id="sector-list" class="sector-list" aria-live="polite"></div>
+        </div>
+        <form id="login-form" class="login-form" novalidate>
+          <p id="login-eyebrow" class="eyebrow">ACESSO</p><h1 id="login-title">Entre na sua conta</h1><p id="login-description" class="muted">Use suas credenciais para acessar suas reservas.</p>
+          <div id="login-identifier-wrap" class="field hidden"><label for="login-identifier">CNPJ ou CPF</label><input id="login-identifier" name="identifier" inputmode="numeric" autocomplete="username" placeholder="00.000.000/0000-00"></div>
+          <div class="field"><label for="login-email">E-mail</label><input id="login-email" name="email" type="email" autocomplete="email" required placeholder="seu@email.com"></div>
+          <div class="field"><label for="login-password">Senha</label><div class="password-wrap"><input id="login-password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••"><button id="show-password" type="button" aria-label="Mostrar senha">◉</button></div></div>
+          <button class="primary-button" type="submit">Entrar <span aria-hidden="true">→</span></button>
+          <p class="form-links"><button type="button" data-help="password">Esqueci minha senha</button><span>·</span><button type="button" data-help="access">Primeiro acesso</button></p>
+        </form>
+        <form id="setup-form" class="login-form hidden" novalidate>
+          <p class="eyebrow">CONFIGURAÇÃO INICIAL</p><h1>Crie o acesso administrador</h1><p class="muted">Este será o primeiro acesso do AC Reserva. Depois, você poderá cadastrar setores, salas e novos usuários.</p>
+          <div class="field"><label for="setup-name">Seu nome</label><input id="setup-name" name="name" autocomplete="name" required minlength="3" maxlength="150" placeholder="Nome completo"></div>
+          <div class="field"><label for="setup-email">E-mail institucional</label><input id="setup-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="voce@acim.org.br"></div>
+          <div class="field"><label for="setup-password">Crie uma senha</label><input id="setup-password" name="password" type="password" autocomplete="new-password" required minlength="12" maxlength="512" placeholder="Mínimo de 12 caracteres"></div>
+          <div class="field"><label for="setup-password-confirmation">Confirme a senha</label><input id="setup-password-confirmation" name="password_confirmation" type="password" autocomplete="new-password" required minlength="12" maxlength="512" placeholder="Repita a senha"></div>
+          <button class="primary-button" type="submit">Criar acesso e entrar <span aria-hidden="true">→</span></button>
+          <p class="form-links"><button type="button" data-back-login>Já tenho um acesso</button></p>
+        </form>
+        <div id="external-access" class="hidden"><p class="eyebrow">ACESSO EXTERNO</p><h1>Como deseja acessar?</h1><p class="muted">Usuários externos têm permissões limitadas e precisam de autorização institucional.</p><div class="external-options"><button>Convidado <span>→</span></button><button>Organizador externo <span>→</span></button><button>Prestador de serviço <span>→</span></button><button>Outro <span>→</span></button></div></div>
+      </div>
+    </section>
+
+    <section id="app-screen" class="app-shell hidden">
+      <aside id="sidebar" class="sidebar">
+        <a class="brand acim-brand" href="#inicio"><span class="brand-mark"><i></i><i></i><i></i></span><span><strong>ACIM</strong><small>RESERVA DE ESPAÇOS</small></span></a>
+        <nav id="main-nav" class="main-nav" aria-label="Navegação principal"></nav>
+        <div class="sidebar-footer"><button id="logout-button" class="logout-button">↪ Sair</button><small>AC Reserva · <span id="year"></span></small></div>
+      </aside>
+      <div id="scrim" class="scrim"></div>
+      <div class="workspace">
+        <header class="topbar"><button id="menu-button" class="icon-button mobile-only" aria-label="Abrir menu">☰</button><div><p id="page-kicker" class="eyebrow">VISÃO GERAL</p><h1 id="page-title">Olá</h1></div><div class="topbar-actions"><button class="icon-button" id="notification-button" aria-label="Notificações">♧<span class="notification-dot"></span></button><button class="profile-button" id="profile-button"><span id="profile-initials">AR</span><i></i></button></div></header>
+        <main id="app-content" class="app-content"></main>
+      </div>
+    </section>
+
+    <dialog id="reservation-dialog" class="reservation-dialog">
+      <form id="reservation-form" method="dialog" novalidate>
+        <div class="dialog-header"><div><p class="eyebrow">NOVA SOLICITAÇÃO</p><h2>Agendar uma reserva</h2></div><button class="icon-button" type="button" data-close-dialog aria-label="Fechar">×</button></div>
+        <p class="muted">A disponibilidade e as regras da sua empresa serão confirmadas antes do envio.</p>
+        <div class="form-grid">
+          <div class="field field--wide"><label for="reservation-title">Nome do evento</label><input id="reservation-title" name="title" required maxlength="150" placeholder="Ex.: Reunião de planejamento"></div>
+          <div class="field"><label for="reservation-start">Início</label><input id="reservation-start" name="starts_at" type="datetime-local" required></div>
+          <div class="field"><label for="reservation-end">Término</label><input id="reservation-end" name="ends_at" type="datetime-local" required></div>
+          <div class="field field--wide"><label for="reservation-room">Sala</label><select id="reservation-room" name="room_id" required><option value="">Selecione uma sala</option></select></div>
+          <div class="field"><label for="reservation-participants">Participantes</label><input id="reservation-participants" name="participant_count" type="number" min="1" max="5000" value="1" required></div>
+          <div class="field field--wide"><label for="reservation-description">Detalhes (opcional)</label><textarea id="reservation-description" name="description" maxlength="2000" rows="3" placeholder="Objetivo ou instruções do evento"></textarea></div>
+        </div>
+        <fieldset class="services-fieldset"><legend>Serviços necessários</legend><label><input name="needs_reception" type="checkbox"> Recepção</label><label><input name="needs_coffee" type="checkbox"> Café / água</label><label><input name="needs_it" type="checkbox"> Suporte de TI</label></fieldset>
+        <div class="dialog-actions"><button class="secondary-button" type="button" data-close-dialog>Cancelar</button><button class="primary-button" type="submit">Enviar solicitação <span aria-hidden="true">→</span></button></div>
+      </form>
+    </dialog>
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>
