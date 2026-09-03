@@ -8,7 +8,7 @@ Sistema de reserva de salas preparado para Vercel. A página é estática e a AP
 2. Copie a URI de conexão do Atlas e autorize as conexões da Vercel na rede do cluster.
 3. Na Vercel, importe este diretório/repositório. Não configure Build Command nem Output Directory.
 4. Em **Settings → Environment Variables**, cadastre `MONGODB_URI`, `MONGODB_DB` e `JWT_SECRET` para Preview e Production, conforme `.env.example`.
-5. Faça o deploy. A Vercel identifica `api/index.py` como uma Function Python e serve `index.html` como frontend. O `vercel.json` já encaminha as rotas `/api/*` para a Function; não configure um comando de build. As coleções e índices são criados automaticamente na primeira chamada.
+5. Faça o deploy. A Vercel identifica `api/index.py` como uma Function Python, que serve o frontend e as rotas `/api/*`. Não configure rewrites, Build Command ou Output Directory. As coleções e índices são criados automaticamente na primeira chamada.
 6. Na primeira abertura, escolha **ACIM** → **Acesso administrativo** → **Primeiro acesso**. Crie o administrador inicial: a aplicação só permite essa ação enquanto não existir nenhum usuário. A sessão será iniciada automaticamente.
 
 Para publicar pela CLI, após instalar a CLI e autenticar:

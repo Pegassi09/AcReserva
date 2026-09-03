@@ -1,12 +1,14 @@
 import logging
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Annotated
 from zoneinfo import ZoneInfo
 
 from bson import ObjectId
 from fastapi import Depends, FastAPI, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 from pymongo.errors import DuplicateKeyError, PyMongoError
 
@@ -22,6 +24,7 @@ from api.lib.eligibility import (
 from api.lib.errors import DomainError, Forbidden, Unauthorized
 from api.lib.security import create_token, decode_token, hash_password, verify_password
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 app = FastAPI(title="AC Reserva API", docs_url=None, redoc_url=None)
 logger = logging.getLogger(__name__)
 app.add_middleware(
@@ -31,6 +34,7 @@ app.add_middleware(
     allow_methods=["GET", "POST", "PATCH", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type"],
 )
+app.mount("/assets", StaticFiles(directory=PROJECT_ROOT / "assets"), name="assets")
 
 
 class LoginPayload(BaseModel):
@@ -99,6 +103,11 @@ async def handle_unexpected_error(request: Request, error: Exception):
 def require_runtime_configuration():
     if not Settings.is_configured():
         raise DomainError(Settings.configuration_message(), 503, "configuration_required")
+
+
+@app.get("/", include_in_schema=False)
+def frontend():
+    return FileResponse(PROJECT_ROOT / "index.html")
 
 
 def normalized_identifier(value: str | None) -> str | None:

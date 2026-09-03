@@ -3,12 +3,9 @@
   "functions": {
     "api/**/*.py": {
       "maxDuration": 30,
-      "excludeFiles": "{tests/**,database/**,scripts/**,assets/**}"
+      "excludeFiles": "{tests/**,database/**,scripts/**}"
     }
   },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/index.py" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
